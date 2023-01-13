@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+  .bd {
+    @apply border border-purple-400;
+  }
+  .bdd {
+    @apply border-2 border-green-400;
+  }
+  .text-circle span {
+    @apply absolute origin-[0px_56px] transform pr-1;
+  }
+  .divtext {
+    @apply animate-infiniRotate;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* For IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
