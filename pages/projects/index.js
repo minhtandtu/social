@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { MiniHero } from "../../components/common/MiniHero";
 import { getNewProjects, getCategories } from "../../services";
 import { MainLayout } from "../../components/layout/MainLayout";
-import { ProjectGallery } from "../../components/projects/projectGallery";
+import { ProjectGallery } from "../../components/projects/ProjectGallery";
 import useTrans from "../../components/hooks/useTrans";
 
 const Projects = ({ projects, categories }) => {
