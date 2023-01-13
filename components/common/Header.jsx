@@ -11,7 +11,7 @@ export const Header = () => {
   const [data, setData] = useState([{ name: "", slug: "" }]);
   const { locale } = useRouter();
   const router = useRouter();
-  const [ismenuopen, setismenuopen] = useState(true);
+  const [ismenuopen, setismenuopen] = useState(false);
   useEffect(() => {
     const query = gql`
       query MyQuery($locale: Locale!) {
