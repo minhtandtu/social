@@ -3,15 +3,21 @@ import { request, gql } from "graphql-request";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import {
+  Bars2Icon,
+  ChevronDownIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/solid";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 export const Header = () => {
   const [data, setData] = useState([{ name: "", slug: "" }]);
+  const [pages, setPages] = useState([{ name: "", slug: "" }]);
   const { locale } = useRouter();
   const router = useRouter();
   const [ismenuopen, setismenuopen] = useState(false);
+  const [activeNumber, setActiveNumber] = useState();
   useEffect(() => {
     const query = gql`
       query MyQuery($locale: Locale!) {
@@ -19,6 +25,21 @@ export const Header = () => {
           name
           slug
           locale
+          logo(locales: en) {
+            url
+          }
+        }
+      }
+    `;
+    const querypage = gql`
+      query page {
+        pages {
+          pageName
+          slug
+          locale
+          logo(locales: en) {
+            url
+          }
         }
       }
     `;
@@ -28,10 +49,20 @@ export const Header = () => {
         query,
         { locale }
       );
-
+      console.log(res.navigations);
       setData(res.navigations);
     }
+    async function pageFetch() {
+      const res = await request(
+        "https://api-ap-northeast-1.hygraph.com/v2/clc47162f37wq01um739sf1lz/master",
+        querypage,
+        { locale }
+      );
+      console.log("Page: ", res);
+      setPages(res.pages);
+    }
     dataFetch();
+    pageFetch();
   }, [locale]);
   function handleMenuOnClick() {
     setismenuopen(!ismenuopen);
@@ -42,7 +73,7 @@ export const Header = () => {
         <div
           className={`${
             ismenuopen ? "hidden " : " "
-          }bdd  mx-2 mt-1 flex h-[4.75rem] w-full rounded-3xl bg-white/30 p-2 md:mx-20 md:mt-6`}
+          }mx-2 mt-1 flex h-[4.75rem] w-full rounded-3xl bg-white/30 p-2 md:mx-20 md:mt-6`}
         >
           <div
             onClick={handleMenuOnClick}
@@ -61,20 +92,22 @@ export const Header = () => {
                 className="h-full"
               />
             </Link>
+            {/* Menu Items */}
             <div className="hidden py-2 md:flex">
               {data.map((item) => (
                 <Link
                   href={`/${item.slug}`}
                   key={item.slug}
-                  className="mx-1 whitespace-nowrap rounded-md 
-                from-primary/50 to-secondary/50 px-4 py-2 font-semibold transition-all hover:bg-gradient-to-r "
+                  className="mx-1
+                whitespace-nowrap rounded-md from-primary/50 to-secondary/50 px-4 py-2 font-semibold transition-all hover:bg-gradient-to-r "
                 >
                   {item.name}
                 </Link>
               ))}
             </div>
+            {/* VN-EN */}
             <div className="rounded-lg  bg-gray-100/50  p-1">
-              <div className=" flex h-[2.75rem] items-center justify-center">
+              <div className="flex h-[2.75rem] items-center justify-center">
                 <Link
                   className={classNames(
                     "rounded-lg p-3 ",
@@ -99,62 +132,48 @@ export const Header = () => {
             </div>
           </div>
         </div>
-        {/* Menu */}
+        {/*Pop up Menu  */}
         <div
           className={`${
             ismenuopen ? "" : "hidden"
-          } bd absolute inset-x-2 top-2 rounded-xl bg-gradient-to-br from-primary/40 to-secondary/40`}
+          } absolute inset-x-2 top-2 rounded-xl bg-gradient-to-br from-primary/80 to-secondary/80`}
         >
           <div
             onClick={handleMenuOnClick}
-            className="bdd mt-2 ml-2 flex h-[3.75rem] w-[3.75rem] cursor-pointer items-center justify-center 
-        rounded-2xl rounded-br-none bg-gradient-to-br from-primary to-secondary px-4 backdrop-blur-xl hover:bg-purple-200 active:bg-purple-50"
+            className="mt-2 ml-2 flex h-[3.75rem] cursor-pointer 
+        items-center bg-transparent px-4 "
           >
-            <XMarkIcon className="h-6 w-6 text-white" />
+            <XMarkIcon className="h-7 w-7 font-extrabold text-black" />
+            <p className="mx-4 text-white/50">|</p>
+            <p className="font-medium text-white/50">Đội Ngũ SuZu</p>
           </div>
-          <ul className="my-4 space-y-8 pl-4 text-base font-semibold text-white">
-            <li className=" ">
-              <Link href="/">
-                <div className="flex">
-                  <Image
-                    src="/vercel.svg"
-                    height={88}
-                    width={88}
-                    alt="logo"
-                    className="mr-2"
-                  ></Image>
-                  <p>Suzu Social</p>
-                </div>
-              </Link>
-            </li>
-            <li className=" ">
-              <Link href="/projects">
-                <div className="flex">
-                  <Image
-                    src="/logosuzugroup.svg"
-                    height={88}
-                    width={88}
-                    alt="logo"
-                    className="mr-2"
-                  ></Image>
-                  <p>Dự án</p>
-                </div>
-              </Link>
-            </li>
-            <li className=" ">
-              <Link href="/about">
-                <div className="flex">
-                  <Image
-                    src="/logo.svg"
-                    height={77}
-                    width={77}
-                    alt="logo"
-                    className="mr-2"
-                  ></Image>
-                  <p>Giới thiệu về Social</p>
-                </div>
-              </Link>
-            </li>
+          <ul className="px-4 py-8 text-base font-semibold text-white">
+            {pages.map((item, index) => (
+              <li
+                key={item.slug}
+                onClick={() => setActiveNumber(index)}
+                className="flex items-center justify-between whitespace-nowrap rounded-md
+                py-4 font-semibold transition-all hover:bg-white/50"
+              >
+                <>
+                  <div className="flex">
+                    <img
+                      src={`${item.logo ? item.logo.url : "/image/logo.svg"}`}
+                      alt="Picture of the author"
+                      width={60}
+                      height={44}
+                      className="mr-2 h-full object-cover"
+                    />
+                    {item.pageName}
+                  </div>
+
+                  <ChevronDownIcon className="float-right h-6 w-6 font-bold text-white"></ChevronDownIcon>
+                </>
+              </li>
+            ))}
+          </ul>
+          <ul className="mx-4 mb-4 py-3">
+            <li className={`${activeNumber == 0 ? "" : "hidden"}`}>a</li>
           </ul>
         </div>
       </div>

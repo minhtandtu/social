@@ -32,13 +32,11 @@ export const StepsToStart = ({ texts }) => {
 
           {/* illustration Image */}
           <div className="absolute top-0 -z-10  h-[246px] max-w-[78.75rem] rounded-[48px] bg-white ">
-            <Image
+            <img
               src="/illustration_group.png"
-              width={1260}
-              height={246}
-              className="h-full w-auto"
+              className="h-full w-auto object-cover"
               alt="steps to start"
-            ></Image>
+            ></img>
           </div>
           {/* O --->O---->O */}
           <div className="z-20 items-center justify-center pt-20 md:flex">
