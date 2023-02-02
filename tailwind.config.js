@@ -24,12 +24,12 @@ module.exports = {
         },
         btnAnimate: {
           "0%": { width: "0" },
-          "100%": { width: "100%" },
+          "100%": { width: "auto" },
         },
       },
       animation: {
         infiniRotate: "infiniRotate 10s linear infinite",
-        btnAnimate: "btnAnimate 0.25s linear forwards ",
+        btnAnimate: "btnAnimate 0.5s linear  ",
       },
     },
   },

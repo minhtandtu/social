@@ -8,18 +8,18 @@ function classNames(...classes) {
 }
 export const ProjectGallery = ({ projects, categories, defaultNumCard }) => {
   return (
-    <div className="mt-4 flex flex-col items-center justify-center">
+    <div className="mt-8 flex flex-col items-center justify-center pb-20 ">
       <Tab.Group>
-        <div className="scrollbar-hide relative mb-8 flex w-full items-center overflow-y-auto ">
-          <div className="mx-auto rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 py-1 px-1 backdrop-blur-xl">
+        <div className="scrollbar-hide relative mb-4 flex w-full items-center overflow-y-auto pb-8 ">
+          <div className="mx-auto rounded-full border border-white/50 bg-gradient-to-r from-primary/20 to-secondary/20 py-1 px-1 backdrop-blur-xl">
             <Tab.List>
-              <div className="flex flex-nowrap">
+              <div className=" flex flex-nowrap">
                 <Tab as={Fragment}>
                   {({ selected }) => (
                     <button
                       className={classNames(
                         selected
-                          ? "border border-white/50 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary shadow-xl"
+                          ? "border border-white/50 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary shadow-xl shadow-purple-200"
                           : " text-gray-700",
                         "mr-1 whitespace-nowrap rounded-[20px] px-2 py-2 font-semibold outline-none"
                       )}
@@ -34,7 +34,7 @@ export const ProjectGallery = ({ projects, categories, defaultNumCard }) => {
                       <button
                         className={classNames(
                           selected
-                            ? "border border-white/50 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary shadow-xl"
+                            ? "border border-white/50 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary shadow-xl  shadow-purple-200"
                             : " text-gray-700",
                           "mr-2 whitespace-nowrap rounded-[20px] px-2 py-2 font-semibold outline-none "
                         )}

@@ -20,7 +20,7 @@ export const ItemGridWithPagin = ({ projects, defaultNumCard }) => {
   let newPJ = [...projects];
   newPJ = newPJ.splice(start, defaultNumCard);
   return (
-    <div className="flex flex-col items-center space-y-4">
+    <div className="flex flex-col items-center space-y-8">
       <div className="grid gap-4 md:grid-cols-3">
         {newPJ.map((item, index) => (
           <div key={index} className="w-full  ">
