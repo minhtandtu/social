@@ -39,7 +39,7 @@ export const Header = () => {
 
   useEffect(() => {
     const query = gql`
-      query SocialMenu() {
+      query SocialMenu($locale: Locale!) {
         sitesConnection(where: { siteName: "SuZu Social" }) {
           edges {
             node {
@@ -48,7 +48,7 @@ export const Header = () => {
               logo {
                 url
               }
-              menus {
+              menus(locales: [$locale]) {
                 locale
                 name
                 slug
@@ -74,7 +74,7 @@ export const Header = () => {
       }
     `;
     const querySubMenus = gql`
-      query SubMenus() {
+      query SubMenus($locale: Locale!) {
         sitesConnection {
           edges {
             node {
@@ -83,7 +83,7 @@ export const Header = () => {
               logo {
                 url
               }
-              menus {
+              menus(locales: [$locale]) {
                 locale
                 name
                 slug
