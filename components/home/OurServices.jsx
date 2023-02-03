@@ -32,6 +32,13 @@ export const OurServices = () => {
               ></AnimatedButton>
             </Link>
           </div>
+          <div className="bdd float-right mt-80 hidden md:block">
+            <img
+              src="/icon/Ellipse30.png"
+              className=" mb-10 h-[54px] pr-10"
+            ></img>
+            <img src="/icon/Ellipse31.png" className="ml-10 h-[118px]"></img>
+          </div>
         </div>
       </div>
     </div>

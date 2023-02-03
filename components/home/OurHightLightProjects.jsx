@@ -11,9 +11,9 @@ export const OurHightLightProjects = ({ projects }) => {
     setNumOfCard(numOfCard + 3);
   }
   return (
-    <div className="py-16">
-      <div className="mx-auto max-w-[78.75rem] px-4 md:w-[90%] ">
-        <div className="flex flex-col items-center justify-center pb-8">
+    <div className=" py-16">
+      <div className=" relative mx-auto max-w-[78.75rem] px-4 md:w-[90%] ">
+        <div className=" mx-auto flex flex-col items-center justify-center pb-8 text-center md:max-w-[620px]">
           <p className="mb-8 text-3xl font-bold md:mb-8 md:text-[3.25rem] md:leading-[4rem] md:tracking-[-0.01em]">
             {trans.topservices.title}
           </p>
@@ -30,6 +30,16 @@ export const OurHightLightProjects = ({ projects }) => {
           <AnimatedButton
             text={trans.button.semoreoutstandingprojects}
           ></AnimatedButton>
+        </div>
+        <div className="absolute -top-16">
+          <img
+            src="/icon/Ellipse31.png"
+            className="mb-14 h-14 md:h-[118px]"
+          ></img>
+          <img
+            src="/icon/Ellipse30.png"
+            className="h-8 pl-28 md:h-[54px]"
+          ></img>
         </div>
       </div>
     </div>

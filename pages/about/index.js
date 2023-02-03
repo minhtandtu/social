@@ -9,10 +9,8 @@ import { getMember } from "../../services";
 const AboutSocialMedia = ({ members }) => {
   const trans = useTrans();
   return (
-    <div className="bg-white ">
-      <div className="">
-        <MiniHero pageTitle={trans.aboutpage.pagetitle} />
-      </div>
+    <div className="w-full">
+      <MiniHero pageTitle={trans.aboutpage.pagetitle} />
       {/* Our mission */}
       <div className="mx-auto w-[90%] max-w-[78.75rem]">
         <OurMission />

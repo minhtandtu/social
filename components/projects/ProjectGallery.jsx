@@ -8,7 +8,7 @@ function classNames(...classes) {
 }
 export const ProjectGallery = ({ projects, categories, defaultNumCard }) => {
   return (
-    <div className="mt-8 flex flex-col items-center justify-center pb-20 ">
+    <div className="mt-8 flex flex-col items-center justify-center pb-20">
       <Tab.Group>
         <div className="scrollbar-hide relative mb-4 flex w-full items-center overflow-y-auto pb-8 ">
           <div className="mx-auto rounded-full border border-white/50 bg-gradient-to-r from-primary/20 to-secondary/20 py-1 px-1 backdrop-blur-xl">

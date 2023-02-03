@@ -25,7 +25,7 @@ export const Hero = () => {
     <div className="relative ">
       <img
         src="/image/bg.png"
-        className="h-full min-h-[718px] object-cover"
+        className="min-h-[718px] w-full object-cover"
       ></img>
       <div className="absolute top-0 h-full w-full px-4">
         <div className="mx-auto flex h-full max-w-5xl flex-col items-center justify-center pt-20 text-center font-semibold text-white">

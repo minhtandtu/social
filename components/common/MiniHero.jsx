@@ -11,7 +11,7 @@ export const MiniHero = (prop) => {
       <div className="hidden sm:block">
         <img
           src="/image/bg_mini.png"
-          className="h-96 w-full object-cover"
+          className="h-full min-h-[262px] w-full object-cover"
         ></img>
       </div>
       <div className="block sm:hidden">

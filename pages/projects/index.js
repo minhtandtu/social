@@ -11,7 +11,7 @@ const Projects = ({ projects, categories }) => {
   return (
     <div className="w-full">
       <MiniHero pageTitle={trans.projectpage.pagetitle} />
-      <div className=" mx-auto -mt-24 w-[90%] max-w-[78.75rem] ">
+      <div className="mx-auto -mt-24 w-[90%] max-w-[78.75rem] ">
         <ProjectGallery
           projects={projects}
           categories={categories}

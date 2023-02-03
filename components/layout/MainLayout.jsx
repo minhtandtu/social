@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const MainLayout = ({ children }) => {
   return (
     <div
-      className={`container mx-auto shadow-2xl ${inter.variable} font-sans text-gray-700`}
+      className={` ${inter.variable} flex w-full flex-col items-center font-sans text-gray-700 `}
     >
       <Header />
       {children}

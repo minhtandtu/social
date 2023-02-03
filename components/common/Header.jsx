@@ -128,7 +128,7 @@ export const Header = () => {
     setismenuopen(!ismenuopen);
   }
   return (
-    <div className="container fixed z-50  bg-transparent">
+    <div className="container fixed z-50 mx-auto bg-transparent">
       <div className="relative flex w-full items-center">
         <div
           className={`${
@@ -174,8 +174,8 @@ export const Header = () => {
               <div className="flex h-[2.75rem] items-center justify-center">
                 <Link
                   className={classNames(
-                    "rounded-xl p-3 ",
-                    locale === "vi" ? "bg-white" : " "
+                    "rounded-xl p-3 font-bold",
+                    locale === "vi" ? "bg-white text-primary " : " "
                   )}
                   href={router.pathname}
                   locale="vi"
@@ -184,8 +184,8 @@ export const Header = () => {
                 </Link>
                 <Link
                   className={classNames(
-                    " rounded-xl  p-3",
-                    locale === "en" ? "bg-white" : " "
+                    " rounded-xl  p-3 font-bold",
+                    locale === "en" ? "bg-white text-primary" : " "
                   )}
                   href={router.pathname}
                   locale="en"
